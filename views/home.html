@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Climate Solutions</title>
+  <link href="/css/main.css" rel="stylesheet">
+</head>
+<body class="bg-base-100">
+  <!-- Navbar -->
+  <div class="navbar bg-base-100">
+    <div class="navbar-start">
+      <a class="text-xl font-bold" href="/">Climate Solutions</a>
+    </div>
+    <div class="navbar-end">
+      <ul class="menu menu-horizontal px-1">
+        <li>
+          <details>
+            <summary>Sector</summary>
+            <ul class="p-2 bg-base-100">
+              <li><a href="/solutions/projects?sector=electricity">Electricity</a></li>
+              <li><a href="/solutions/projects?sector=industry">Industry</a></li>
+              <li><a href="/solutions/projects?sector=agriculture">Food, Agriculture, and Land Use</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- Hero -->
+  <div class="hero min-h-[50vh] bg-base-200">
+    <div class="hero-content text-center">
+      <div class="max-w-md">
+        <h1 class="text-5xl font-bold">Explore Climate Solutions</h1>
+        <p class="py-6">Discover innovative projects to combat climate change.</p>
+        <a href="/solutions/projects" class="btn btn-primary">View Projects</a>
+      </div>
+    </div>
+  </div>
+  <!-- Project Cards -->
+  <div class="container mx-auto py-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Card 1 (Project ID: 1) -->
+      <div class="card bg-base-100 shadow-xl">
+        <figure>
+          <img src="https://drawdown.org/sites/default/files/solutions/solution_farmlandrestoration01.jpg" alt="Abandoned Farmland Restoration">
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Abandoned Farmland Restoration</h2>
+          <p>Restoration can bring degraded farmland back into productivity and sequester carbon in the process.</p>
+          <div class="card-actions justify-end">
+            <a href="/solutions/projects/1" class="btn btn-primary">Details</a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 (Project ID: 5) -->
+      <div class="card bg-base-100 shadow-xl">
+        <figure>
+          <img src="https://drawdown.org/sites/default/files/solutions/solution_farmlandirrigation01.jpg" alt="Farm Irrigation Efficiency">
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Farm Irrigation Efficiency</h2>
+          <p>Drip and sprinkler irrigation, among other practices and technologies, make farm water use less energy/fuel intensive and conserve significant amounts of freshwater.</p>
+          <div class="card-actions justify-end">
+            <a href="/solutions/projects/5" class="btn btn-primary">Details</a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 (Project ID: 9) -->
+      <div class="card bg-base-100 shadow-xl">
+        <figure>
+          <img src="https://drawdown.org/sites/default/files/solutions/solution_concentratedsolar01.jpg" alt="Concentrated Solar Power">
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Concentrated Solar Power</h2>
+          <p>Concentrated solar power uses sunlight as a heat source. Arrays of mirrors concentrate incoming rays onto a receiver to heat fluid, produce steam, and turn turbines.</p>
+          <div class="card-actions justify-end">
+            <a href="/solutions/projects/9" class="btn btn-primary">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
