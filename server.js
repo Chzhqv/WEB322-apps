@@ -78,3 +78,4 @@ projectData.initialize()
         console.log(`Failed to start server: ${err}`);
     });
 
+// Trigger redeployment for Assignment 3 on June 27, 2025
