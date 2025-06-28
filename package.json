@@ -12,7 +12,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "tailwindcss": "^4.1.11",
+    "daisyui": "^5.0.43",
+    "@tailwindcss/typography": "^5.0.16"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
