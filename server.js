@@ -78,4 +78,6 @@ projectData.initialize()
         console.log(`Failed to start server: ${err}`);
     });
 
-// Trigger redeployment for Assignment 3 on June 27, 2025
+app.get('/test-css', (req, res) => {
+  res.sendFile(path.join(__dirname, '/public/css/main.css'));
+});
