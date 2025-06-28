@@ -78,6 +78,6 @@ projectData.initialize()
         console.log(`Failed to start server: ${err}`);
     });
 
-app.get('/test-css', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/css/main.css'));
+app.get('/test-image', (req, res) => {
+  res.sendFile(path.join(__dirname, '/public/images/dog.jpg'));
 });
