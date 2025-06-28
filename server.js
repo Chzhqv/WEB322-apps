@@ -6,7 +6,7 @@
 * 
 *  https://www.senecapolytechnic.ca/about/policies/academic-integrity-policy.html
 * 
-*  Name: Your Name ______ Student ID: Your Student ID ______ Date: June 26, 2025
+*  Name: Nikita Chizhikov Student ID: 173740234 Date: June 26, 2025
 *
 ********************************************************************************/
 const path = require('path');
