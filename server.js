@@ -81,3 +81,5 @@ projectData.initialize()
 app.get('/test-image', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/images/dog.jpg'));
 });
+
+app.use(express.static('public', { setHeaders: (res) => console.log('Serving static file') }));
