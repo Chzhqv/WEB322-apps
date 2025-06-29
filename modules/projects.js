@@ -13,7 +13,7 @@ function initialize() {
                     sector: sector ? sector.sector_name : "Unknown Sector"
                 });
             });
-            resolve(); // Resolve with no data once complete    
+            resolve();   
         } catch (err) {
             reject("Unable to initialize projects");
         }

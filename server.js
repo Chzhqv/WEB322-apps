@@ -6,17 +6,23 @@
 * 
 *  https://www.senecapolytechnic.ca/about/policies/academic-integrity-policy.html
 * 
-*  Name: Nikita Chizhikov Student ID: 173740234 Date: June 26, 2025
+*  Name: Nikita Chizhikov Student ID: 173740234 Date: June 28, 2025
 *
 ********************************************************************************/
 const path = require('path');
 const express = require('express');
+const fs = require('fs');
 const projectData = require('./modules/projects');
 const app = express();
 const HTTP_PORT = process.env.PORT || 8080;
 
-app.use(express.static('public'));
-// GET "/"
+
+const staticPath = path.join(__dirname, 'static');
+app.use('/static', express.static(staticPath, {
+    setHeaders: (res, filePath) => {
+        console.log(`Serving static file from: ${filePath} (mapped to ${staticPath})`);
+    }
+}));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/home.html'));
@@ -26,7 +32,6 @@ app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/about.html'));
 });
 
-// GET "/solutions/projects"
 app.get('/solutions/projects', (req, res) => {
     const sector = req.query.sector;
     if (sector) {
@@ -52,9 +57,8 @@ app.get('/solutions/projects', (req, res) => {
     }
 });
 
-// GET "/solutions/projects/:id"
 app.get('/solutions/projects/:id', (req, res) => {
-    const projectId = parseInt(req.params.id); // Extract ID from URL parameter
+    const projectId = parseInt(req.params.id);
     projectData.getProjectById(projectId)
         .then(project => {
             res.json(project);
@@ -62,6 +66,14 @@ app.get('/solutions/projects/:id', (req, res) => {
         .catch(err => {
             res.status(404).json({ error: err });
         });
+});
+
+app.get('/test-image', (req, res) => {
+    res.sendFile(path.join(staticPath, '/images/dog.jpg'));
+});
+
+app.get('/debug-static', (req, res) => {
+    res.send('Static folder path: ' + staticPath);
 });
 
 app.use((req, res) => {
@@ -77,9 +89,3 @@ projectData.initialize()
     .catch((err) => {
         console.log(`Failed to start server: ${err}`);
     });
-
-app.get('/test-image', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/images/dog.jpg'));
-});
-
-app.use(express.static('public', { setHeaders: (res) => console.log('Serving static file') }));

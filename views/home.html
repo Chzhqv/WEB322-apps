@@ -1,86 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Climate Solutions</title>
-  <link href="/css/main.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Solutions</title>
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-base-100">
-  <!-- Navbar -->
-  <div class="navbar bg-base-100">
-    <div class="navbar-start">
-      <a class="text-xl font-bold" href="/">Climate Solutions</a>
-    </div>
-    <div class="navbar-end">
-      <ul class="menu menu-horizontal px-1">
-        <li>
-          <details>
-            <summary>Sector</summary>
-            <ul class="p-2 bg-base-100">
-              <li><a href="/solutions/projects?sector=electricity">Electricity</a></li>
-              <li><a href="/solutions/projects?sector=industry">Industry</a></li>
-              <li><a href="/solutions/projects?sector=agriculture">Food, Agriculture, and Land Use</a></li>
+<body>
+     <!-- Navbar -->
+    <div class="navbar bg-base-100 shadow-xl">
+        <div class="navbar-start">
+            <a class="btn btn-ghost text-xl" href="/">Climate Solutions</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+                <li><a href="/about">About</a></li>
+                <li>
+                    <details>
+                        <summary>Sector</summary>
+                        <ul class="p-2 bg-base-100">
+                            <li><a href="/solutions/projects?sector=Agriculture">Agriculture</a></li>
+                            <li><a href="/solutions/projects?sector=Industry">Industry</a></li>
+                            <li><a href="/solutions/projects?sector=Transportation">Transportation</a></li>
+                        </ul>
+                    </details>
+                </li>
             </ul>
-          </details>
-        </li>
-        <li><a href="/about">About</a></li>
-      </ul>
-    </div>
-  </div>
-  <!-- Hero -->
-  <div class="hero min-h-[50vh] bg-base-200">
-    <div class="hero-content text-center">
-      <div class="max-w-md">
-        <h1 class="text-5xl font-bold">Explore Climate Solutions</h1>
-        <p class="py-6">Discover innovative projects to combat climate change.</p>
-        <a href="/solutions/projects" class="btn btn-primary">View Projects</a>
-      </div>
-    </div>
-  </div>
-  <!-- Project Cards -->
-  <div class="container mx-auto py-10">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Card 1 (Project ID: 1) -->
-      <div class="card bg-base-100 shadow-xl">
-        <figure>
-          <img src="https://drawdown.org/sites/default/files/solutions/solution_farmlandrestoration01.jpg" alt="Abandoned Farmland Restoration">
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Abandoned Farmland Restoration</h2>
-          <p>Restoration can bring degraded farmland back into productivity and sequester carbon in the process.</p>
-          <div class="card-actions justify-end">
-            <a href="/solutions/projects/1" class="btn btn-primary">Details</a>
-          </div>
         </div>
-      </div>
-      <!-- Card 2 (Project ID: 5) -->
-      <div class="card bg-base-100 shadow-xl">
-        <figure>
-          <img src="https://drawdown.org/sites/default/files/solutions/solution_farmlandirrigation01.jpg" alt="Farm Irrigation Efficiency">
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Farm Irrigation Efficiency</h2>
-          <p>Drip and sprinkler irrigation, among other practices and technologies, make farm water use less energy/fuel intensive and conserve significant amounts of freshwater.</p>
-          <div class="card-actions justify-end">
-            <a href="/solutions/projects/5" class="btn btn-primary">Details</a>
-          </div>
+        <div class="navbar-end">
+            <div class="dropdown dropdown-end lg:hidden">
+                <label tabindex="0" class="btn btn-ghost">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </label>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a href="/about">About</a></li>
+                    <li>
+                        <a>Sector</a>
+                        <ul class="p-2">
+                            <li><a href="/solutions/projects?sector=Agriculture">Agriculture</a></li>
+                            <li><a href="/solutions/projects?sector=Industry">Industry</a></li>
+                            <li><a href="/solutions/projects?sector=Transportation">Transportation</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-      <!-- Card 3 (Project ID: 9) -->
-      <div class="card bg-base-100 shadow-xl">
-        <figure>
-          <img src="https://drawdown.org/sites/default/files/solutions/solution_concentratedsolar01.jpg" alt="Concentrated Solar Power">
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Concentrated Solar Power</h2>
-          <p>Concentrated solar power uses sunlight as a heat source. Arrays of mirrors concentrate incoming rays onto a receiver to heat fluid, produce steam, and turn turbines.</p>
-          <div class="card-actions justify-end">
-            <a href="/solutions/projects/9" class="btn btn-primary">Details</a>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <div class="hero bg-base-200 rounded-lg p-8 mb-8">
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                    <h1 class="text-4xl font-bold">Explore Climate Solutions</h1>
+                    <p class="py-6">Discover innovative projects that address climate change and promote sustainability.</p>
+                    <a href="/solutions/projects" class="btn btn-primary">View Projects</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 2: Alternative Cement -->
+            <div class="card bg-base-100 border-4 border-gray-700 shadow-xl">
+                <figure><img src="https://drawdown.org/sites/default/files/solutions2020/solution_alternativecement02.jpg" alt="Alternative Cement" class="w-full h-48 object-cover" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Alternative Cement</h2>
+                    <p>Conventional cement production is a significant source of carbon dioxide. Reformulation can reduce emissions by millions of metric tons each year.</p>
+                    <div class="card-actions justify-end">
+                        <a href="/solutions/projects/2" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 3: Bicycle Infrastructure -->
+            <div class="card bg-base-100 border-4 border-gray-700 shadow-xl">
+                <figure><img src="https://drawdown.org/sites/default/files/solutions2020/solution_bicycle_infrastructure.jpg" alt="Bicycle Infrastructure" class="w-full h-48 object-cover" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Bicycle Infrastructure</h2>
+                    <p>Infrastructure is essential for supporting safe and abundant bicycle use, which curbs emissions by reducing the need for fossil-fuel-dependent transportation.</p>
+                    <div class="card-actions justify-end">
+                        <a href="/solutions/projects/3" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 4: Biomass Power -->
+            <div class="card bg-base-100 border-4 border-gray-700 shadow-xl">
+                <figure><img src="https://drawdown.org/sites/default/files/solutions/solution_biomass01.jpg" alt="Biomass Power" class="w-full h-48 object-cover" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Biomass Power</h2>
+                    <p>Biomass feedstock can replace fossil fuels for generating heat and electricity. Perennial biomass offers a “bridge” to a clean, renewable energy future.</p>
+                    <div class="card-actions justify-end">
+                        <a href="/solutions/projects/4" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 6: Bamboo Production -->
+            <div class="card bg-base-100 border-4 border-gray-700 shadow-xl">
+                <figure><img src="https://drawdown.org/sites/default/files/solutions/Solution_Bamboo01.jpg" alt="Bamboo Production" class="w-full h-48 object-cover" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Bamboo Production</h2>
+                    <p>Bamboo rapidly sequesters carbon in biomass and soil and can thrive on degraded lands. Long-lived bamboo products can store carbon over time.</p>
+                    <div class="card-actions justify-end">
+                        <a href="/solutions/projects/6" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 7: Bioplastics -->
+            <div class="card bg-base-100 border-4 border-gray-700 shadow-xl">
+                <figure><img src="https://drawdown.org/sites/default/files/solutions2020/solution_bioplastics02.jpg" alt="Bioplastics" class="w-full h-48 object-cover" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Bioplastics</h2>
+                    <p>Most plastics are made from fossil fuels, but bioplastics utilize plants as an alternative source of carbon. They often have lower emissions and sometimes biodegrade.</p>
+                    <div class="card-actions justify-end">
+                        <a href="/solutions/projects/7" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 8: Carpooling -->
+            <div class="card bg-base-100 border-4 border-gray-700 shadow-xl">
+                <figure><img src="https://drawdown.org/sites/default/files/solutions2020/solution_carpooling.jpg" alt="Carpooling" class="w-full h-48 object-cover" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Carpooling</h2>
+                    <p>When people share rides in passenger vehicles through ride-sharing or similar practices, they can reduce greenhouse gas emissions per traveler.</p>
+                    <div class="card-actions justify-end">
+                        <a href="/solutions/projects/8" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
