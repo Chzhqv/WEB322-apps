@@ -1,69 +1,202 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Climate Solutions - <%= project.title %></title>
-    <link href="/css/main.css" rel="stylesheet">
+    <title><%= project.title || 'Project Details' %> - Climate Solutions</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <%- include('partials/navbar', { page: '' }) %>
-
-    <!-- Main Content -->
-    <div class="container mx-auto px-4 py-8">
-        <!-- Hero Section -->
-        <div class="hero bg-base-200 rounded-lg p-8 mb-8">
-            <div class="hero-content text-center">
-                <div class="max-w-md">
-                    <h1 class="text-4xl font-bold"><%= project.title %></h1>
-                    <p class="py-6">Below, you will find detailed information about the project: <%= project.title %></p>
-                </div>
+    <%- include('partials/navbar', {page: 'project'}) %>
+    
+    <!-- Dynamic Hero Section -->
+    <div class="hero min-h-96 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div class="hero-content text-center text-white">
+            <div class="max-w-4xl">
+                <h1 class="mb-5 text-5xl font-bold">
+                    <%= project.title || 'Project Title' %>
+                </h1>
+                <p class="mb-5 text-xl">
+                    Below, you will find detailed information about the project: "<%= project.title || 'Unknown Project' %>"
+                </p>
+                
+                <!-- Back Button -->
+                <a href="#" onclick="history.back(); return false;" 
+                   class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-blue-600">
+                    ← Back to Projects
+                </a>
             </div>
-        </div>
-
-        <!-- Project Details -->
-        <div class="card bg-base-100 border-4 border-gray-300 shadow-xl p-6 mb-8">
-            <figure class="flex justify-center">
-                <img src="<%= project.feature_img_url %>" alt="<%= project.title %>" class="rounded-lg max-w-full h-auto">
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Introduction</h2>
-                <p><%= project.intro_short %></p>
-                <h2 class="card-title mt-4">Impact</h2>
-                <p><%= project.impact %></p>
-                <h2 class="card-title mt-4">More Information</h2>
-                <a href="<%= project.original_source_url %>" target="_blank" class="btn btn-primary">Visit Source</a>
-            </div>
-        </div>
-
-        <!-- Random Quote -->
-        <div class="card bg-base-100 border-4 border-gray-300 shadow-xl p-6 mb-8">
-            <div class="card-body">
-                <h2 class="card-title">Inspiration</h2>
-                <p id="quote-text"></p>
-                <p id="quote-author" class="text-right italic"></p>
-            </div>
-        </div>
-
-        <!-- Back Button -->
-        <div class="text-center">
-            <a href="#" onclick="history.back(); return false;" class="btn btn-secondary">Back</a>
         </div>
     </div>
 
-    <!-- JavaScript for Random Quote -->
+    <!-- Project Details Content -->
+    <div class="container mx-auto p-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-8">
+                
+                <!-- Project Image -->
+                <% if (project.feature_img_url) { %>
+                <div class="card bg-base-100 shadow-xl">
+                    <figure>
+                        <img src="<%= project.feature_img_url %>" 
+                             alt="<%= project.title || 'Project Image' %>"
+                             class="w-full h-64 object-cover">
+                    </figure>
+                </div>
+                <% } %>
+
+                <!-- Short Introduction -->
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h2 class="card-title text-2xl mb-4">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Introduction
+                        </h2>
+                        <p class="text-gray-400 leading-relaxed">
+                            <%= project.intro_short || 'No introduction available for this project.' %>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project Impact -->
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h2 class="card-title text-2xl mb-4">
+                            <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                            Environmental Impact
+                        </h2>
+                        <p class="text-gray-400 leading-relaxed">
+                            <%= project.impact || 'Impact information not available for this project.' %>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Daily Quote -->
+                <div class="card bg-gradient-to-r from-yellow-100 to-orange-100 shadow-xl">
+                    <div class="card-body">
+                        <h2 class="card-title text-2xl mb-4">
+                            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-1l-4 4z"></path>
+                            </svg>
+                            Daily Inspiration
+                        </h2>
+                        <div id="quote-container">
+                            <div class="loading loading-spinner loading-lg text-yellow-600"></div>
+                            <p class="text-gray-500">Loading inspirational quote...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-6">
+                
+                <!-- Project Info -->
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-lg mb-4">Project Information</h3>
+                        <div class="space-y-3">
+                            <div>
+                                <span class="font-semibold text-gray-400">Sector:</span>
+                                <div class="mt-1">
+                                    <span class="badge badge-primary badge-lg">
+                                        <%= project.sector || 'Unknown' %>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <% if (project.year) { %>
+                            <div>
+                                <span class="font-semibold text-gray-400">Year:</span>
+                                <p class="text-gray-400"><%= project.year %></p>
+                            </div>
+                            <% } %>
+                            
+                            <div>
+                                <span class="font-semibold text-gray-400">Project ID:</span>
+                                <p class="text-gray-400">#<%= project.id %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- External Link -->
+                <% if (project.original_source_url) { %>
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-lg mb-4">Learn More</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Want to dive deeper into this project? Visit the original source for more detailed information.
+                        </p>
+                        <a href="<%= project.original_source_url %>" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn btn-primary btn-block">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                            Visit Original Source
+                        </a>
+                    </div>
+                </div>
+                <% } %>
+
+                <!-- Navigation -->
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-lg mb-4">Navigation</h3>
+                        <div class="space-y-2">
+                            <a href="/solutions/projects" class="btn btn-outline w-full">
+                                All Projects
+                            </a>
+                            <% if (project.sector) { %>
+                            <a href="/solutions/projects?sector=<%= encodeURIComponent(project.sector) %>" 
+                               class="btn btn-outline w-full">
+                                More in <%= project.sector %>
+                            </a>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AJAX Quote Loading Script -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            const quoteContainer = document.getElementById('quote-container');
+            
+            // Fetch random quote
             fetch('https://dummyjson.com/quotes/random')
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('quote-text').textContent = data.quote;
-                    document.getElementById('quote-author').textContent = `- ${data.author}`;
+                    quoteContainer.innerHTML = `
+                        <blockquote class="text-lg font-medium text-gray-800 mb-3">
+                            "${data.quote}"
+                        </blockquote>
+                        <cite class="text-sm text-yellow-700 font-semibold">
+                            — ${data.author}
+                        </cite>
+                    `;
                 })
                 .catch(error => {
                     console.error('Error fetching quote:', error);
-                    document.getElementById('quote-text').textContent = 'Failed to load quote.';
-                    document.getElementById('quote-author').textContent = '';
+                    quoteContainer.innerHTML = `
+                        <blockquote class="text-lg font-medium text-gray-600 mb-3">
+                            "The best time to plant a tree was 20 years ago. The second best time is now."
+                        </blockquote>
+                        <cite class="text-sm text-yellow-700 font-semibold">
+                            — Chinese Proverb
+                        </cite>
+                    `;
                 });
         });
     </script>

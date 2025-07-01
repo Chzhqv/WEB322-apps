@@ -1,67 +1,99 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Climate Solutions - Projects</title>
-    <link href="/css/main.css?v=9" rel="stylesheet"> <!-- New cache-buster -->
+    <title>Climate Solutions Projects</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <%- include('partials/navbar', { page: '/solutions/projects' }) %>
-
-    <!-- Main Content -->
-    <div class="container mx-auto px-4 py-8 debug-border">
-        <!-- Hero Section -->
-        <div class="hero bg-gradient-to-r from-green-400 to-blue-500 rounded-lg p-8 mb-8 text-white">
-            <div class="hero-content text-center">
-                <div class="max-w-md">
-                    <h1 class="text-5xl font-bold">Projects</h1>
-                    <p class="py-6">Explore innovative climate solutions by sector:</p>
-                    <div class="flex justify-center gap-4">
-                        <a href="/solutions/projects?sector=Agriculture" class="btn btn-primary btn-lg">Agriculture</a>
-                        <a href="/solutions/projects?sector=Industry" class="btn btn-primary btn-lg">Industry</a>
-                        <a href="/solutions/projects?sector=Transportation" class="btn btn-primary btn-lg">Transportation</a>
-                    </div>
+    <%- include('partials/navbar', {page: 'projects'}) %>
+    
+    <!-- Hero Section with Sector Filter Links -->
+    <div class="hero min-h-96 bg-gradient-to-r from-green-400 to-blue-500">
+        <div class="hero-content text-center text-white">
+            <div class="max-w-md">
+                <h1 class="mb-5 text-5xl font-bold">Climate Solutions</h1>
+                <p class="mb-5">Discover innovative projects making a difference in our world</p>
+                
+                <!-- Sector Filter Buttons -->
+                <div class="flex flex-wrap gap-2 justify-center mb-4">
+                    <a href="/solutions/projects" class="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-blue-500 rounded hover:bg-blue-600">All Projects</a>
+                <a href="/solutions/projects?sector=Industry" class="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-blue-500 rounded hover:bg-blue-600">Industry</a>
+                <a href="/solutions/projects?sector=Transportation" class="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-blue-500 rounded hover:bg-blue-600">Transportation</a>
+                <a href="/solutions/projects?sector=Buildings" class="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-blue-500 rounded hover:bg-blue-600">Buildings</a>
+                <a href="/solutions/projects?sector=Electricity" class="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-blue-500 rounded hover:bg-blue-600">Electricity</a>
+                <a href="/solutions/projects?sector=Food" class="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-blue-500 rounded hover:bg-blue-600">Food</a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Projects Table -->
+    <!-- Projects Table --> 
+    <div class="container mx-auto p-6">
         <div class="overflow-x-auto">
-            <table class="table table-zebra w-full bg-white shadow-lg rounded-lg">
+            <table class="table table-zebra w-full">
                 <thead>
-                    <tr class="bg-gray-200">
-                        <th class="border-b-4 border-gray-300 p-4 text-lg font-semibold">Title</th>
-                        <th class="border-b-4 border-gray-300 p-4 text-lg font-semibold">Sector</th>
-                        <th class="border-b-4 border-gray-300 p-4 text-lg font-semibold">Summary</th>
-                        <th class="border-b-4 border-gray-300 p-4 text-lg font-semibold">Details</th>
+                    <tr>
+                        <th class="text-left">Project Title</th>
+                        <th class="text-center">Sector</th>
+                        <th class="text-left">Summary</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% if (!projects || projects.length === 0) { %>
-                        <tr><td colspan="4" class="p-4 text-center">No projects available.</td></tr>
-                    <% } else { %>
+                    <% if (projects && projects.length > 0) { %>
                         <% projects.forEach(project => { %>
-                            <tr class="hover:bg-gray-100 transition duration-200">
-                                <td class="border-b-2 border-gray-200 p-4"><%= project.title %></td>
-                                <td class="border-b-2 border-gray-200 p-4"><a href="/solutions/projects?sector=<%= project.sector_id %>" class="btn btn-secondary btn-sm"><%= project.sector_id %></a></td>
-                                <td class="border-b-2 border-gray-200 p-4"><%= project.summary_short %></td>
-                                <td class="border-b-2 border-gray-200 p-4"><a href="/solutions/projects/<%= project.id %>" class="btn btn-accent btn-sm">details</a></td>
-                            </tr>
+                        <tr class="hover">
+                            <td class="font-semibold">
+                                <%= project.title || 'Untitled Project' %>
+                            </td>
+                            <td class="text-center">
+                                <a href="/solutions/projects?sector=<%= encodeURIComponent(project.sector || '') %>" 
+                                   class="btn btn-sm btn-outline btn-primary">
+                                    <%= project.sector || 'Unknown' %>
+                                </a>
+                            </td>
+                            <td class="max-w-md">
+                                <div class="text-sm text-gray-400 line-clamp-3">
+                                    <%= (project.summary_short || 'No summary available').substring(0, 150) %>
+                                    <% if ((project.summary_short || '').length > 150) { %>...<% } %>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <a href="/solutions/projects/<%= project.id %>" 
+                                   class="btn btn-sm btn-primary">
+                                    Details
+                                </a>
+                            </td>
+                        </tr>
                         <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="4" class="text-center text-gray-500 py-8">
+                                <div class="flex flex-col items-center gap-2">
+                                    <svg class="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                    <p class="font-medium">No projects found</p>
+                                    <p class="text-sm">Adjust your filter criteria</p>
+                                </div>
+                            </td>
+                        </tr>
                     <% } %>
                 </tbody>
             </table>
         </div>
+
+        <!-- Project Statistics -->
+        <div class="mt-8 stats shadow w-full">
+            <div class="stat">
+                <div class="stat-title">Total Projects</div>
+                <div class="stat-value text-primary"><%= projects ? projects.length : 0 %></div>
+                <div class="stat-desc">Climate solutions</div>
+            </div>
+        </div>
     </div>
-    <style>
-        .debug-border {
-            border: 2px solid red; /* Debug border */
-        }
-        /* Fallback styles */
-        .hero { background-color: #4ade80; }
-        .table { border-collapse: collapse; border: 1px solid #e5e7eb; }
-        .btn { padding: 0.5rem 1rem; border-radius: 0.25rem; background-color: #3b82f6; color: white; text-decoration: none; }
-    </style>
 </body>
 </html>

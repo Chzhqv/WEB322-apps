@@ -20,18 +20,21 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
 const staticPath = path.join(__dirname, 'static');
-console.log(`Static path set to: ${staticPath}`); // Debug static path
+console.log(`Static path set to: ${staticPath}`); 
 
 app.use('/static', express.static(staticPath, {
     setHeaders: (res, filePath) => {
-        console.log(`Serving static file from: ${filePath} (mapped to ${staticPath})`); // Enhanced log
+        console.log(`Serving static file from: ${filePath} (mapped to ${staticPath})`); 
     }
 }));
 
-
-app.get('/test-static', (req, res) => {
-    res.sendFile(path.join(staticPath, 'css/main.css'));
+app.use((req, res, next) => {
+    if (req.url.includes('/static/')) {
+        console.log(`DEBUG: Static request for: ${req.url}`);
+    }
+    next();
 });
+
   
 app.get('/', (req, res) => {
     res.render("home");
@@ -77,9 +80,6 @@ app.get('/solutions/projects/:id', (req, res) => {
         });
 });
 
-app.get('/test-image', (req, res) => {
-    res.sendFile(path.join(staticPath, '/images/dog.jpg'));
-});
 
 app.use((req, res) => {
     res.status(404).render("404", { message: "I'm sorry, we're unable to find what you're looking for" });
