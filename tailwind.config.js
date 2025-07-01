@@ -1,11 +1,17 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./views/*.html'],
+  content: ['./views/**/*.ejs'],
   theme: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  plugins: [require('daisyui'), require('@tailwindcss/typography')],
   daisyui: {
-    themes: ['dim'],
+    themes: ['light'],
   },
+  safelist: [
+    'table',
+    'table-zebra',
+    'btn',
+    'btn-primary',
+     
+  ],
 };

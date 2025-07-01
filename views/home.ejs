@@ -10,45 +10,7 @@
 </head>
 <body>
      <!-- Navbar -->
-    <div class="navbar bg-base-100 shadow-xl">
-        <div class="navbar-start">
-            <a class="btn btn-ghost text-xl" href="/">Climate Solutions</a>
-        </div>
-        <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal px-1">
-                <li><a href="/about">About</a></li>
-                <li>
-                    <details>
-                        <summary>Sector</summary>
-                        <ul class="p-2 bg-base-100">
-                            <li><a href="/solutions/projects?sector=Agriculture">Agriculture</a></li>
-                            <li><a href="/solutions/projects?sector=Industry">Industry</a></li>
-                            <li><a href="/solutions/projects?sector=Transportation">Transportation</a></li>
-                        </ul>
-                    </details>
-                </li>
-            </ul>
-        </div>
-        <div class="navbar-end">
-            <div class="dropdown dropdown-end lg:hidden">
-                <label tabindex="0" class="btn btn-ghost">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-                </label>
-                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a href="/about">About</a></li>
-                    <li>
-                        <a>Sector</a>
-                        <ul class="p-2">
-                            <li><a href="/solutions/projects?sector=Agriculture">Agriculture</a></li>
-                            <li><a href="/solutions/projects?sector=Industry">Industry</a></li>
-                            <li><a href="/solutions/projects?sector=Transportation">Transportation</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
+    <%- include('partials/navbar', { page: '/about' }) %>
 
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8">

@@ -1,0 +1,67 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Solutions - Projects</title>
+    <link href="/css/main.css?v=9" rel="stylesheet"> <!-- New cache-buster -->
+</head>
+<body>
+    <%- include('partials/navbar', { page: '/solutions/projects' }) %>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8 debug-border">
+        <!-- Hero Section -->
+        <div class="hero bg-gradient-to-r from-green-400 to-blue-500 rounded-lg p-8 mb-8 text-white">
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">Projects</h1>
+                    <p class="py-6">Explore innovative climate solutions by sector:</p>
+                    <div class="flex justify-center gap-4">
+                        <a href="/solutions/projects?sector=Agriculture" class="btn btn-primary btn-lg">Agriculture</a>
+                        <a href="/solutions/projects?sector=Industry" class="btn btn-primary btn-lg">Industry</a>
+                        <a href="/solutions/projects?sector=Transportation" class="btn btn-primary btn-lg">Transportation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Table -->
+        <div class="overflow-x-auto">
+            <table class="table table-zebra w-full bg-white shadow-lg rounded-lg">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border-b-4 border-gray-300 p-4 text-lg font-semibold">Title</th>
+                        <th class="border-b-4 border-gray-300 p-4 text-lg font-semibold">Sector</th>
+                        <th class="border-b-4 border-gray-300 p-4 text-lg font-semibold">Summary</th>
+                        <th class="border-b-4 border-gray-300 p-4 text-lg font-semibold">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (!projects || projects.length === 0) { %>
+                        <tr><td colspan="4" class="p-4 text-center">No projects available.</td></tr>
+                    <% } else { %>
+                        <% projects.forEach(project => { %>
+                            <tr class="hover:bg-gray-100 transition duration-200">
+                                <td class="border-b-2 border-gray-200 p-4"><%= project.title %></td>
+                                <td class="border-b-2 border-gray-200 p-4"><a href="/solutions/projects?sector=<%= project.sector_id %>" class="btn btn-secondary btn-sm"><%= project.sector_id %></a></td>
+                                <td class="border-b-2 border-gray-200 p-4"><%= project.summary_short %></td>
+                                <td class="border-b-2 border-gray-200 p-4"><a href="/solutions/projects/<%= project.id %>" class="btn btn-accent btn-sm">details</a></td>
+                            </tr>
+                        <% }); %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <style>
+        .debug-border {
+            border: 2px solid red; /* Debug border */
+        }
+        /* Fallback styles */
+        .hero { background-color: #4ade80; }
+        .table { border-collapse: collapse; border: 1px solid #e5e7eb; }
+        .btn { padding: 0.5rem 1rem; border-radius: 0.25rem; background-color: #3b82f6; color: white; text-decoration: none; }
+    </style>
+</body>
+</html>

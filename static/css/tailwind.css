@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  .btn {
+    @apply inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700;
+  }
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700;
+  }
+  .table {
+    @apply min-w-full divide-y divide-gray-200;
+  }
+  .table-zebra {
+    @apply table w-full;
+  }
+}

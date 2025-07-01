@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Solutions - About</title>
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <%- include('partials/navbar', { page: '/about' }) %>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <div class="hero bg-base-200 rounded-lg p-8 mb-8">
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                    <h1 class="text-4xl font-bold">About</h1>
+                    <p class="py-6">Climate solutions encompass a range of strategies aimed at mitigating or reversing the impacts of climate change.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Left Column:-->
+            <div class="flex justify-center items-center">
+                <img src="/static/images/dog.jpg" alt="Dog" class="rounded-lg shadow-lg max-w-full h-auto">
+            </div>
+            <!-- Right Column:-->
+            <div class="flex items-center">
+                <div class="card bg-base-100 border-4 border-gray-700 shadow-xl p-6">
+                    <div class="card-body">
+                        <p>I'm Nikita, a student at Seneca College studying web development. In WEB322, I'm learning how to build applications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
