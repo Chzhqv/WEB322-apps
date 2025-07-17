@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project</title>
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <%- include('partials/navbar', { page: '/solutions/addProject' }) %>
+    <div class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-center text-gray-400 mb-8">Add Project</h1>
+        <form method="POST" action="/solutions/addProject" class="max-w-2xl mx-auto bg-gray-800 p-8 rounded-lg shadow-md">
+        <div class="form-control mb-4">
+            <label for="title" class="label">
+                    <span class="label-text font-bold text-gray-300">Project Title</span>
+                </label>
+                <input type="text" id="title" name="title" placeholder="Enter project title" required
+                       class="input input-bordered w-full" />
+        </div>
+        <div class="form-control mb-4">
+            <label for="feature_img_url" class="label">
+                <span class="label-text font-bold text-gray-300">Feature Image URL</span>
+            </label>
+            <input type="url" id="feature_img_url" name="feature_img_url" placeholder="Enter image URL" required
+                    class="input input-bordered w-full" />
+        </div>
+        <div class="form-control mb-4">
+            <label for="sector_id" class="label">
+                <span class="label-text font-bold text-gray-300">Sector</span>
+            </label>
+            <select id="sector_id" name="sector_id" required class="select select-bordered w-full">
+                <option value="" disabled selected>Select a sector</option>
+                <% sectors.forEach(sector => { %>
+                     <option value="<%= sector.id %>"><%= sector.sector_name %></option>
+                <% }) %>
+            </select>
+        </div>
+        <div class="form-control mb-4">
+            <label for="intro_short" class="label">
+                <span class="label-text font-bold text-gray-300">Short Introduction</span>
+            </label>
+            <textarea id="intro_short" name="intro_short" placeholder="Enter a short introduction" required
+                        class="textarea textarea-bordered w-full h-24"></textarea>
+        </div>
+        <div class="form-control mb-4">
+            <label for="summary_short" class="label">
+                <span class="label-text font-bold text-gray-300">Short Summary</span>
+            </label>
+            <textarea id="summary_short" name="summary_short" placeholder="Enter a short summary" required
+                        class="textarea textarea-bordered w-full h-24"></textarea>
+        </div>
+        <div class="form-control mb-4">
+            <label for="impact" class="label">
+                <span class="label-text font-bold text-gray-300">Impact</span>
+            </label>
+            <textarea id="impact" name="impact" placeholder="Describe the project's impact" required
+                        class="textarea textarea-bordered w-full h-32"></textarea>
+        </div>
+        <div class="form-control mb-6">
+            <label for="original_source_url" class="label">
+                <span class="label-text font-bold text-gray-300">Original Source URL</span>
+            </label>
+            <input type="url" id="original_source_url" name="original_source_url" placeholder="Enter source URL" required
+                    class="input input-bordered w-full" />
+        </div>
+        <div class="form-control">
+            <button type="submit" class="btn btn-primary w-full">Submit Project</button>
+        </div>
+        </form>
+    </div>
+</body>
+</html>
