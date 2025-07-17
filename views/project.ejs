@@ -26,6 +26,10 @@
                    class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-blue-600">
                     ← Back to Projects
                 </a>
+
+                <a href="/solutions/editProject/<%= project.id %>" class="btn btn-success">
+                    Edit
+                </a>
             </div>
         </div>
     </div>
@@ -107,7 +111,7 @@
                                 <span class="font-semibold text-gray-400">Sector:</span>
                                 <div class="mt-1">
                                     <span class="badge badge-primary badge-lg">
-                                        <%= project.sector || 'Unknown' %>
+                                        <%= project.Sector.sector_name || 'Unknown' %>
                                     </span>
                                 </div>
                             </div>
@@ -156,10 +160,10 @@
                             <a href="/solutions/projects" class="btn btn-outline w-full">
                                 All Projects
                             </a>
-                            <% if (project.sector) { %>
-                            <a href="/solutions/projects?sector=<%= encodeURIComponent(project.sector) %>" 
+                            <% if (project.Sector.sector_name) { %>
+                            <a href="/solutions/projects?sector=<%= encodeURIComponent(project.Sector.sector_name) %>" 
                                class="btn btn-outline w-full">
-                                More in <%= project.sector %>
+                                More in <%= project.Sector.sector_name %>
                             </a>
                             <% } %>
                         </div>

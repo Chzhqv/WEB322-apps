@@ -50,9 +50,9 @@
                                 <%= project.title || 'Untitled Project' %>
                             </td>
                             <td class="text-center">
-                                <a href="/solutions/projects?sector=<%= encodeURIComponent(project.sector || '') %>" 
+                                <a href="/solutions/projects?sector=<%= encodeURIComponent(project.Sector.sector_name || '') %>" 
                                    class="btn btn-sm btn-outline btn-primary">
-                                    <%= project.sector || 'Unknown' %>
+                                    <%= project.Sector.sector_name || 'Unknown' %>
                                 </a>
                             </td>
                             <td class="max-w-md">
