@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User History</title>
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <%- include('partials/navbar', {page: '/userHistory'}) %>
+
+    <div class="hero min-h-[40vh] bg-base-200">
+        <div class="hero-content text-center">
+            <div class="max-w-md">
+                <h1 class="text-5xl font-bold"><%= session.user.userName %></h1>
+                <p class="py-6 text-lg">Email: <%= session.user.email %></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="px-4 py-10 md:px-8">
+        <h2 class="text-3xl font-semibold mb-4">Login History</h2>
+        <div class="overflow-x-auto">
+            <table class="table table-zebra w-full">
+                <thead>
+                    <tr>
+                        <th>Date / Time</th>
+                        <th>Client Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(session.user.loginHistory.length > 0) { %>
+                        <% session.user.loginHistory.forEach(history => { %>
+                            <tr>
+                                <td><%= new Date(history.dateTime).toLocaleString() %></td>
+                                <td><%= history.userAgent %></td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="2" class="text-center">No login history found.</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
