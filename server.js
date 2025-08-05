@@ -203,4 +203,6 @@ projectData.initialize()
         console.log(`unable to start server: ${err}`);
     });
 
+//UPLOAD TO VERCEL
+//V4 VERCEL CANT SEE MY COMMITS
   
