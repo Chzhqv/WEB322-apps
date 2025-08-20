@@ -22,7 +22,7 @@ const clientSessions = require('client-sessions');
 
 app.use(clientSessions({
   cookieName: 'session',
-  secret: process.env.SESSION_SECRET, 
+  secret: 'abczxc123ff' ,
   duration: 2 * 60 * 1000, // 2 min
   activeDuration: 60 * 1000 // 1min
 }));
